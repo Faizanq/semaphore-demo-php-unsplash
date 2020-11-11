@@ -177,11 +177,7 @@ return [
 
     ],
 
-    'unsplash' => [
-        'applicationId' => env('UNSPLASH_ACCESS_KEY'),
-        'secret' => env('UNSPLASH_SECRET_KEY'),
-        'source' => 'Image Gallery Demo'
-    ],
+    'forcast_api_key' => env('FORCAST_API_KEY'),
 
     /*
     |--------------------------------------------------------------------------

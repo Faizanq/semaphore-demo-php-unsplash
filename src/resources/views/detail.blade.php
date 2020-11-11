@@ -4,7 +4,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:600,900" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Unsplash Image Gallery Demo</title>
+    <title>{{$city->name}} Weather Forcast</title>
     <style>
         * {
             box-sizing: border-box;
@@ -34,11 +34,7 @@
 
         .gallery-image img {
             height: 250px;
-            @if($orientation=='portrait')
-                width: 190px;
-            @else
-                width: 350px;
-            @endif
+            width: 350px;
             transform: scale(1.0);
             transition: transform 0.4s ease;
         }
@@ -47,11 +43,7 @@
             box-sizing: content-box;
             margin: 10px;
             height: 250px;
-            @if($orientation=='portrait')
-                width: 190px;
-            @else
-                width: 350px;
-            @endif
+            width: 350px;
             overflow: hidden;
             display: inline-block;
             color: white;
@@ -69,11 +61,7 @@
 
         .transparent-box {
             height: 250px;
-            @if($orientation=='portrait')
-                width: 190px;
-            @else
-                width: 350px;
-            @endif
+            width: 350px;
             background-color:rgba(0, 0, 0, 0);
             position: absolute;
             top: 0;
@@ -114,30 +102,17 @@
 </head>
 
 <body>
-  <p class="heading">Image Gallery Demo</p>
-  <div class="gallery-form">
-    {{ Form::open(array('url' => '/gallery/search')) }}
-    {{ Form::text('search', $search) }}
-    {{ Form::number('count', $count) }}
-    {{ Form::select('orientation', ['landscape' => 'Landscape', 'portrait' => 'Portrait'], $orientation) }}
-    {{ Form::submit('Search') }}
-    {{ Form::close() }}
-  </div>
+  <p class="heading">{{$city->name}} Weather Forcast</p>
   <div class="gallery-image">
-
-    @foreach($images as $image)
     <div class="img-box">
-        <a href="{{ $image['urls']['full'] }}">
-            <img src="{{ $image['urls']['thumb'] }}" alt="{{ $image['alt_description'] }}">
-        </a>
+            <img src="{{ $city->cover_image_url }}" >
       <div class="transparent-box">
         <div class="caption">
-            <p>{{ $image['alt_description'] }}</p>
-            <p class="opacity-low">{{ $image['user']['name'] }}</p>
+            <p>{{ $city->name }}</p>
         </div>
       </div>
     </div>
-    @endforeach
+    <p>{{$stat}}</p>
 
 </body>
 </html>

@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', 'ImageGalleryController@index');
-Route::get('/gallery', 'ImageGalleryController@index');
-Route::post('/gallery/search', 'ImageGalleryController@search');
+Route::get('/', 'WeatherController@index');
+Route::get('/cities', 'WeatherController@index');
+Route::post('/city/search', 'WeatherController@search');
+Route::get('/forcast', 'WeatherController@cityForcastInfo')->name('forcast');
+
